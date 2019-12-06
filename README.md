@@ -24,7 +24,7 @@ People who don't want to run, unite!
 
 然后在`设置/破解功能`中选择导出`data.db`, 例如使用微信发送给文件传输助手什么的(可能被保存成不同类型的文件), 随后请用文件管理器找到这个文件以备后用.
 
-访问[https://hamiltonhuaji.ml](https://hamiltonhuaji.ml), 根据其提示上传`data.db`并修改之. 将被修改过的`data.db`下载到本地后, 从`设置/破解功能`中导入`data.db`. 如果无效果, 随意建立临时账户以进入设置页面, 多导入几次即可.
+访问[http://pkunorun.github.io/](http://pkunorun.github.io/), 根据其提示上传`data.db`并修改之. 将被修改过的`data.db`下载到本地后, 从`设置/破解功能`中导入`data.db`. 如果无效果, 随意建立临时账户以进入设置页面, 多导入几次即可.
 
 导入后App由于并不完善,会停止运行(白屏),可以手动清除活动并再次进入.
 若导入成功应该可以在`旧账号`中看到之前已经登录的账号.此时通过PKU Runner原有的上传功能上传记录即可.
