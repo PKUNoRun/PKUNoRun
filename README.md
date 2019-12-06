@@ -64,3 +64,9 @@ Q:
     为什么导出`data.db`再导回去后登录会失效,从而回到登录界面?
 A:
     第一次登录后需要彻底退出PKU Runner,使其将登录信息写入`data.db`.随后再次打开PKU Runner方可导出.
+<p style="display:none">
+Q:
+    为什么这个项目偶尔会出现`PKUWalker`字样?
+A:
+    因为我们还没完全把名字改过来.
+</p>
