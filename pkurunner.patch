@@ -1,29 +1,29 @@
-diff -Nuar pkurunner-v1.2.5_origin/res/values/arrays.xml pkurunner-v1.2.5_res/res/values/arrays.xml
---- pkurunner-v1.2.5_origin/res/values/arrays.xml	2019-09-28 17:49:38.699723100 +0800
-+++ pkurunner-v1.2.5_res/res/values/arrays.xml	2019-09-28 17:50:44.721355800 +0800
+diff -Nuar pkurunner-latest/res/values/arrays.xml pkurunner-target/res/values/arrays.xml
+--- pkurunner-latest/res/values/arrays.xml	2020-09-21 13:11:24.051454900 +0800
++++ pkurunner-target/res/values/arrays.xml	2020-09-21 13:22:49.913410000 +0800
 @@ -36,6 +36,7 @@
          <item>点了没</item>
          <item>点没</item>
          <item>没</item>
-+        <item>竟然被你发现了,要不要来 https://github.com/HamiltonHuaji/PKUWalker 看看?</item>
++        <item>竟然被你发现了, 要不要来 https://github.com/pkunorun/pkunorun 看看?</item>
      </string-array>
      <string-array name="p_setting_gender_display">
          <item>男</item>
-diff -Nuar pkurunner-v1.2.5_origin/res/values/strings.xml pkurunner-v1.2.5_res/res/values/strings.xml
---- pkurunner-v1.2.5_origin/res/values/strings.xml	2019-09-28 17:49:38.703584100 +0800
-+++ pkurunner-v1.2.5_res/res/values/strings.xml	2019-09-28 17:52:09.603470500 +0800
+diff -Nuar pkurunner-latest/res/values/strings.xml pkurunner-target/res/values/strings.xml
+--- pkurunner-latest/res/values/strings.xml	2020-09-21 13:11:24.226986000 +0800
++++ pkurunner-target/res/values/strings.xml	2020-09-21 13:24:03.397641100 +0800
 @@ -1,5 +1,8 @@
  <?xml version="1.0" encoding="utf-8"?>
  <resources>
 +    <string name="p_setting_crack">破解功能</string>
-+    <string name="p_settings_crack_export">导出 data.db 至 /sdcard </string>
-+    <string name="p_settings_crack_import">从 /sdcard 导入 data.db </string>
++    <string name="p_settings_crack_export">导出 data.db 至其他应用</string>
++    <string name="p_settings_crack_import">从文件系统导入 data.db </string>
      <string name="a_login_button_text">IAAA 登录</string>
      <string name="a_login_canceled">登录已取消</string>
      <string name="a_login_embed_title">PKU RUNNER</string>
-diff -Nuar pkurunner-v1.2.5_origin/res/xml/app_settings.xml pkurunner-v1.2.5_res/res/xml/app_settings.xml
---- pkurunner-v1.2.5_origin/res/xml/app_settings.xml	2019-09-28 17:49:38.556752000 +0800
-+++ pkurunner-v1.2.5_res/res/xml/app_settings.xml	2019-09-28 17:51:42.783911300 +0800
+diff -Nuar pkurunner-latest/res/xml/app_settings.xml pkurunner-target/res/xml/app_settings.xml
+--- pkurunner-latest/res/xml/app_settings.xml	2020-09-21 13:11:20.651552800 +0800
++++ pkurunner-target/res/xml/app_settings.xml	2020-09-21 13:25:11.590871400 +0800
 @@ -16,6 +16,10 @@
              <Preference android:title="导出数据库文件" android:key="pref_dropbox_upload" />
          </PreferenceScreen>
@@ -35,19 +35,19 @@ diff -Nuar pkurunner-v1.2.5_origin/res/xml/app_settings.xml pkurunner-v1.2.5_res
      <PreferenceCategory android:title="@string/p_setting_about">
          <Preference android:title="PKU Runner" android:key="pref_about" android:summary="@string/p_setting_about_text" />
          <Preference android:title="@string/p_setting_version_name" android:key="pref_version" />
-diff -Nuar pkurunner-v1.2.5_origin/res/xml/file_provider.xml pkurunner-v1.2.5_res/res/xml/file_provider.xml
---- pkurunner-v1.2.5_origin/res/xml/file_provider.xml	2019-09-28 17:49:38.573108100 +0800
-+++ pkurunner-v1.2.5_res/res/xml/file_provider.xml	2019-09-28 18:25:42.850971400 +0800
+diff -Nuar pkurunner-latest/res/xml/file_provider.xml pkurunner-target/res/xml/file_provider.xml
+--- pkurunner-latest/res/xml/file_provider.xml	2020-09-21 13:11:19.804814400 +0800
++++ pkurunner-target/res/xml/file_provider.xml	2020-09-21 13:26:23.956261800 +0800
 @@ -1,4 +1,5 @@
  <?xml version="1.0" encoding="utf-8"?>
  <paths>
      <external-path name="photos" path="Android/data/cn.edu.pku.pkurunner/files/Pictures/photo/" />
 +    <files-path path="" name="walker_record" />
  </paths>
-\ 文件尾没有换行符
-diff -Nuar pkurunner-v1.2.5_origin/smali/cn/edu/pku/pkurunner/MainActivity.smali pkurunner-v1.2.5_res/smali/cn/edu/pku/pkurunner/MainActivity.smali
---- pkurunner-v1.2.5_origin/smali/cn/edu/pku/pkurunner/MainActivity.smali	2019-09-28 17:49:39.356218900 +0800
-+++ pkurunner-v1.2.5_res/smali/cn/edu/pku/pkurunner/MainActivity.smali	2019-09-28 17:53:25.799742200 +0800
+\ No newline at end of file
+diff -Nuar pkurunner-latest/smali/cn/edu/pku/pkurunner/MainActivity.smali pkurunner-target/smali/cn/edu/pku/pkurunner/MainActivity.smali
+--- pkurunner-latest/smali/cn/edu/pku/pkurunner/MainActivity.smali	2020-09-21 13:11:41.373393300 +0800
++++ pkurunner-target/smali/cn/edu/pku/pkurunner/MainActivity.smali	2020-09-21 13:27:37.751833500 +0800
 @@ -2101,7 +2101,7 @@
  
      if-eqz v5, :cond_1
@@ -57,9 +57,9 @@ diff -Nuar pkurunner-v1.2.5_origin/smali/cn/edu/pku/pkurunner/MainActivity.smali
  
      return v0
  
-diff -Nuar pkurunner-v1.2.5_origin/smali/cn/edu/pku/pkurunner/Settings/SettingsActivity$1.smali pkurunner-v1.2.5_res/smali/cn/edu/pku/pkurunner/Settings/SettingsActivity$1.smali
---- pkurunner-v1.2.5_origin/smali/cn/edu/pku/pkurunner/Settings/SettingsActivity$1.smali	1970-01-01 08:00:00.000000000 +0800
-+++ pkurunner-v1.2.5_res/smali/cn/edu/pku/pkurunner/Settings/SettingsActivity$1.smali	2019-09-28 18:26:18.289200400 +0800
+diff -Nuar pkurunner-latest/smali/cn/edu/pku/pkurunner/Settings/SettingsActivity$1.smali pkurunner-target/smali/cn/edu/pku/pkurunner/Settings/SettingsActivity$1.smali
+--- pkurunner-latest/smali/cn/edu/pku/pkurunner/Settings/SettingsActivity$1.smali	1970-01-01 08:00:00.000000000 +0800
++++ pkurunner-target/smali/cn/edu/pku/pkurunner/Settings/SettingsActivity$1.smali	2020-09-21 13:31:09.813435700 +0800
 @@ -0,0 +1,161 @@
 +.class Lcn/edu/pku/pkurunner/Settings/SettingsActivity$1;
 +.super Ljava/lang/Object;
@@ -222,9 +222,10 @@ diff -Nuar pkurunner-v1.2.5_origin/smali/cn/edu/pku/pkurunner/Settings/SettingsA
 +
 +    return v3
 +.end method
-diff -Nuar pkurunner-v1.2.5_origin/smali/cn/edu/pku/pkurunner/Settings/SettingsActivity$2.smali pkurunner-v1.2.5_res/smali/cn/edu/pku/pkurunner/Settings/SettingsActivity$2.smali
---- pkurunner-v1.2.5_origin/smali/cn/edu/pku/pkurunner/Settings/SettingsActivity$2.smali	1970-01-01 08:00:00.000000000 +0800
-+++ pkurunner-v1.2.5_res/smali/cn/edu/pku/pkurunner/Settings/SettingsActivity$2.smali	2019-09-28 18:00:33.161637100 +0800
+\ No newline at end of file
+diff -Nuar pkurunner-latest/smali/cn/edu/pku/pkurunner/Settings/SettingsActivity$2.smali pkurunner-target/smali/cn/edu/pku/pkurunner/Settings/SettingsActivity$2.smali
+--- pkurunner-latest/smali/cn/edu/pku/pkurunner/Settings/SettingsActivity$2.smali	1970-01-01 08:00:00.000000000 +0800
++++ pkurunner-target/smali/cn/edu/pku/pkurunner/Settings/SettingsActivity$2.smali	2020-09-21 13:32:54.084888000 +0800
 @@ -0,0 +1,136 @@
 +.class Lcn/edu/pku/pkurunner/Settings/SettingsActivity$2;
 +.super Ljava/lang/Object;
@@ -362,20 +363,12 @@ diff -Nuar pkurunner-v1.2.5_origin/smali/cn/edu/pku/pkurunner/Settings/SettingsA
 +    :goto_0
 +    return v3
 +.end method
-diff -Nuar pkurunner-v1.2.5_origin/smali/cn/edu/pku/pkurunner/Settings/SettingsActivity.smali pkurunner-v1.2.5_res/smali/cn/edu/pku/pkurunner/Settings/SettingsActivity.smali
---- pkurunner-v1.2.5_origin/smali/cn/edu/pku/pkurunner/Settings/SettingsActivity.smali	2019-09-28 17:49:39.389878800 +0800
-+++ pkurunner-v1.2.5_res/smali/cn/edu/pku/pkurunner/Settings/SettingsActivity.smali	2019-09-28 18:00:28.871735500 +0800
-@@ -1384,7 +1384,7 @@
- 
-     move-result-object v0
- 
--    const-string v1, "v1.2.5"
-+    const-string v1, "v1.2.5,不知道高到哪里去了"
- 
-     .line 235
-     invoke-virtual {v0, v1}, Landroid/preference/Preference;->setSummary(Ljava/lang/CharSequence;)V
-@@ -1691,8 +1691,189 @@
-     return p0
+\ No newline at end of file
+diff -Nuar pkurunner-latest/smali/cn/edu/pku/pkurunner/Settings/SettingsActivity.smali pkurunner-target/smali/cn/edu/pku/pkurunner/Settings/SettingsActivity.smali
+--- pkurunner-latest/smali/cn/edu/pku/pkurunner/Settings/SettingsActivity.smali	2020-09-21 13:11:42.783612500 +0800
++++ pkurunner-target/smali/cn/edu/pku/pkurunner/Settings/SettingsActivity.smali	2020-09-21 13:37:04.818895700 +0800
+@@ -343,6 +343,189 @@
+     return-void
  .end method
  
 +.method private setup_triggers()V
@@ -410,8 +403,8 @@ diff -Nuar pkurunner-v1.2.5_origin/smali/cn/edu/pku/pkurunner/Settings/SettingsA
 +    .line 110
 +    return-void
 +.end method
- 
- # virtual methods
++ 
++ # virtual methods
 +
 +.method protected onActivityResult(IILandroid/content/Intent;)V
 +    .locals 9
@@ -561,10 +554,19 @@ diff -Nuar pkurunner-v1.2.5_origin/smali/cn/edu/pku/pkurunner/Settings/SettingsA
 +    return-void
 +.end method
 +
- .method protected onCreate(Landroid/os/Bundle;)V
-     .locals 0
+ .method private synthetic a(Landroid/preference/Preference;Ljava/lang/Boolean;)V
+     .locals 1
+     .annotation system Ldalvik/annotation/Throws;
+@@ -1384,7 +1567,7 @@
  
-@@ -1719,6 +1900,8 @@
+     move-result-object v0
+ 
+-    const-string v1, "v1.2.6"
++    const-string v1, "v1.2.6, 不知道高到哪里去了"
+ 
+     .line 235
+     invoke-virtual {v0, v1}, Landroid/preference/Preference;->setSummary(Ljava/lang/CharSequence;)V
+@@ -1719,6 +1902,8 @@
      .line 76
      invoke-direct {p0}, Lcn/edu/pku/pkurunner/Settings/SettingsActivity;->i()V
  
