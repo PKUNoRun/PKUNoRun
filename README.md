@@ -18,7 +18,7 @@ People who don't want to run, unite!
 
 ## Usage
 
-首先下载[pkurunner-v1.2.5_res.apk](https://github.com/PKUNoRun/PKUNoRun/raw/master/pkurunner-v1.2.5_res.apk),并登录你的账号.
+首先下载[pkurunner-target.apk](https://github.com/PKUNoRun/PKUNoRun/releases/download/v1.2.6/pkurunner-target.apk),并登录你的账号.
 
 请注意这个修改后的App与原版App不可共存, 请先上传已有的所有跑步记录再卸载原版, 以免跑步记录丢失. 安装修改版后请先登录您的账号, 再完全退出PKU Runner一次, 使PKU Runner把已有的登录信息写入数据库.
 
@@ -31,6 +31,8 @@ People who don't want to run, unite!
 
 导出`data.db`的功能自然也可以用作备份跑步记录.
 
+对于仍然担心安全性的用户, `generator`目录下提供完全本地运行的记录生成工具.
+
 ## To Developers
 
 在本目录下执行
@@ -41,9 +43,9 @@ People who don't want to run, unite!
 
 即可.
 
-如果想为本项目创建其他的patch,请在完成构建后在`pkurunner-v1.2.5_res/`目录中尽情修改,并执行`make patch`得到新的`pkurunner.patch`.
+如果想为本项目创建其他的patch,请在完成构建后在`pkurunner-target/`目录中尽情修改,并执行`make patch`得到新的`pkurunner.patch`.
 
-如果您想检查我们的代码, 也可以在`pkurunner-v1.2.5_res/`目录明中观察.
+如果您想检查我们的代码, 也可以在`pkurunner-target/`目录明中观察, 或者直接看`pkurunner.patch`的内容.
 
 事实上, 本项目设计成前后端形式是为了保密我们所使用的生成数据的算法, 以增加对伪造数据的特征工程的难度.
 
