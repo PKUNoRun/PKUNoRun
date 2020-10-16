@@ -19,6 +19,7 @@ pkurunner-latest.apk:
 	wget https://pkunewyouth.pku.edu.cn/public/apks/pkurunner-latest.apk
 
 patch: pkurunner-latest pkurunner-target
+	rm -fr pkurunner-target/build
 	diff -Nuar pkurunner-latest/ pkurunner-target/ > pkurunner.patch
 
 .PHONY : sign

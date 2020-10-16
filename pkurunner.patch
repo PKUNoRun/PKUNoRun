@@ -1,6 +1,23 @@
+diff -Nuar pkurunner-latest/AndroidManifest.xml pkurunner-target/AndroidManifest.xml
+--- pkurunner-latest/AndroidManifest.xml	2020-10-13 23:31:54.219456200 +0800
++++ pkurunner-target/AndroidManifest.xml	2020-10-16 16:06:27.000000000 +0800
+@@ -24,6 +24,13 @@
+                 <category android:name="android.intent.category.DEFAULT"/>
+             </intent-filter>
+         </activity>
++        <!-- <activity android:name=".AcceptDatabaseActivity">
++            <intent-filter>
++                <action android:name="android.intent.action.SEND" />
++                <category android:name="android.intent.category.DEFAULT" />
++                <data android:mimeType="*/*" />
++            </intent-filter>
++        </activity> -->
+         <activity android:label="@string/app_name" android:launchMode="singleTop" android:name="cn.edu.pku.pkurunner.MainActivity" android:screenOrientation="portrait" android:theme="@style/BaseTheme.Launcher">
+             <intent-filter>
+                 <action android:name="android.intent.action.MAIN"/>
 diff -Nuar pkurunner-latest/res/values/arrays.xml pkurunner-target/res/values/arrays.xml
---- pkurunner-latest/res/values/arrays.xml	2020-09-21 13:11:24.051454900 +0800
-+++ pkurunner-target/res/values/arrays.xml	2020-09-21 13:22:49.913410000 +0800
+--- pkurunner-latest/res/values/arrays.xml	2020-10-13 23:31:54.724437900 +0800
++++ pkurunner-target/res/values/arrays.xml	2020-10-16 16:02:15.679485800 +0800
 @@ -36,6 +36,7 @@
          <item>点了没</item>
          <item>点没</item>
@@ -10,8 +27,8 @@ diff -Nuar pkurunner-latest/res/values/arrays.xml pkurunner-target/res/values/ar
      <string-array name="p_setting_gender_display">
          <item>男</item>
 diff -Nuar pkurunner-latest/res/values/strings.xml pkurunner-target/res/values/strings.xml
---- pkurunner-latest/res/values/strings.xml	2020-09-21 13:11:24.226986000 +0800
-+++ pkurunner-target/res/values/strings.xml	2020-09-21 13:24:03.397641100 +0800
+--- pkurunner-latest/res/values/strings.xml	2020-10-13 23:31:54.706853600 +0800
++++ pkurunner-target/res/values/strings.xml	2020-10-16 16:02:35.504070600 +0800
 @@ -1,5 +1,8 @@
  <?xml version="1.0" encoding="utf-8"?>
  <resources>
@@ -22,8 +39,8 @@ diff -Nuar pkurunner-latest/res/values/strings.xml pkurunner-target/res/values/s
      <string name="a_login_canceled">登录已取消</string>
      <string name="a_login_embed_title">PKU RUNNER</string>
 diff -Nuar pkurunner-latest/res/xml/app_settings.xml pkurunner-target/res/xml/app_settings.xml
---- pkurunner-latest/res/xml/app_settings.xml	2020-09-21 13:11:20.651552800 +0800
-+++ pkurunner-target/res/xml/app_settings.xml	2020-09-21 13:25:11.590871400 +0800
+--- pkurunner-latest/res/xml/app_settings.xml	2020-10-13 23:31:54.670798500 +0800
++++ pkurunner-target/res/xml/app_settings.xml	2020-10-16 16:03:34.461856700 +0800
 @@ -16,6 +16,10 @@
              <Preference android:title="导出数据库文件" android:key="pref_dropbox_upload" />
          </PreferenceScreen>
@@ -36,18 +53,18 @@ diff -Nuar pkurunner-latest/res/xml/app_settings.xml pkurunner-target/res/xml/ap
          <Preference android:title="PKU Runner" android:key="pref_about" android:summary="@string/p_setting_about_text" />
          <Preference android:title="@string/p_setting_version_name" android:key="pref_version" />
 diff -Nuar pkurunner-latest/res/xml/file_provider.xml pkurunner-target/res/xml/file_provider.xml
---- pkurunner-latest/res/xml/file_provider.xml	2020-09-21 13:11:19.804814400 +0800
-+++ pkurunner-target/res/xml/file_provider.xml	2020-09-21 13:26:23.956261800 +0800
+--- pkurunner-latest/res/xml/file_provider.xml	2020-10-13 23:31:54.366764300 +0800
++++ pkurunner-target/res/xml/file_provider.xml	2020-10-16 16:04:05.259906700 +0800
 @@ -1,4 +1,5 @@
  <?xml version="1.0" encoding="utf-8"?>
  <paths>
      <external-path name="photos" path="Android/data/cn.edu.pku.pkurunner/files/Pictures/photo/" />
 +    <files-path path="" name="walker_record" />
  </paths>
-\ No newline at end of file
+\ 文件尾没有换行符
 diff -Nuar pkurunner-latest/smali/cn/edu/pku/pkurunner/MainActivity.smali pkurunner-target/smali/cn/edu/pku/pkurunner/MainActivity.smali
---- pkurunner-latest/smali/cn/edu/pku/pkurunner/MainActivity.smali	2020-09-21 13:11:41.373393300 +0800
-+++ pkurunner-target/smali/cn/edu/pku/pkurunner/MainActivity.smali	2020-09-21 13:27:37.751833500 +0800
+--- pkurunner-latest/smali/cn/edu/pku/pkurunner/MainActivity.smali	2020-10-13 23:31:55.417783000 +0800
++++ pkurunner-target/smali/cn/edu/pku/pkurunner/MainActivity.smali	2020-10-16 16:07:52.810246700 +0800
 @@ -2101,7 +2101,7 @@
  
      if-eqz v5, :cond_1
@@ -59,7 +76,7 @@ diff -Nuar pkurunner-latest/smali/cn/edu/pku/pkurunner/MainActivity.smali pkurun
  
 diff -Nuar pkurunner-latest/smali/cn/edu/pku/pkurunner/Settings/SettingsActivity$1.smali pkurunner-target/smali/cn/edu/pku/pkurunner/Settings/SettingsActivity$1.smali
 --- pkurunner-latest/smali/cn/edu/pku/pkurunner/Settings/SettingsActivity$1.smali	1970-01-01 08:00:00.000000000 +0800
-+++ pkurunner-target/smali/cn/edu/pku/pkurunner/Settings/SettingsActivity$1.smali	2020-09-21 13:31:09.813435700 +0800
++++ pkurunner-target/smali/cn/edu/pku/pkurunner/Settings/SettingsActivity$1.smali	2020-10-16 16:09:24.646334500 +0800
 @@ -0,0 +1,161 @@
 +.class Lcn/edu/pku/pkurunner/Settings/SettingsActivity$1;
 +.super Ljava/lang/Object;
@@ -222,10 +239,10 @@ diff -Nuar pkurunner-latest/smali/cn/edu/pku/pkurunner/Settings/SettingsActivity
 +
 +    return v3
 +.end method
-\ No newline at end of file
+\ 文件尾没有换行符
 diff -Nuar pkurunner-latest/smali/cn/edu/pku/pkurunner/Settings/SettingsActivity$2.smali pkurunner-target/smali/cn/edu/pku/pkurunner/Settings/SettingsActivity$2.smali
 --- pkurunner-latest/smali/cn/edu/pku/pkurunner/Settings/SettingsActivity$2.smali	1970-01-01 08:00:00.000000000 +0800
-+++ pkurunner-target/smali/cn/edu/pku/pkurunner/Settings/SettingsActivity$2.smali	2020-09-21 13:32:54.084888000 +0800
++++ pkurunner-target/smali/cn/edu/pku/pkurunner/Settings/SettingsActivity$2.smali	2020-10-16 16:10:12.829852800 +0800
 @@ -0,0 +1,136 @@
 +.class Lcn/edu/pku/pkurunner/Settings/SettingsActivity$2;
 +.super Ljava/lang/Object;
@@ -363,11 +380,11 @@ diff -Nuar pkurunner-latest/smali/cn/edu/pku/pkurunner/Settings/SettingsActivity
 +    :goto_0
 +    return v3
 +.end method
-\ No newline at end of file
+\ 文件尾没有换行符
 diff -Nuar pkurunner-latest/smali/cn/edu/pku/pkurunner/Settings/SettingsActivity.smali pkurunner-target/smali/cn/edu/pku/pkurunner/Settings/SettingsActivity.smali
---- pkurunner-latest/smali/cn/edu/pku/pkurunner/Settings/SettingsActivity.smali	2020-09-21 13:11:42.783612500 +0800
-+++ pkurunner-target/smali/cn/edu/pku/pkurunner/Settings/SettingsActivity.smali	2020-09-21 13:37:04.818895700 +0800
-@@ -343,6 +343,189 @@
+--- pkurunner-latest/smali/cn/edu/pku/pkurunner/Settings/SettingsActivity.smali	2020-10-13 23:31:55.465553700 +0800
++++ pkurunner-target/smali/cn/edu/pku/pkurunner/Settings/SettingsActivity.smali	2020-10-16 17:42:35.831670600 +0800
+@@ -343,6 +343,239 @@
      return-void
  .end method
  
@@ -404,22 +421,21 @@ diff -Nuar pkurunner-latest/smali/cn/edu/pku/pkurunner/Settings/SettingsActivity
 +    return-void
 +.end method
 + 
-+ # virtual methods
-+
++# virtual methods
 +.method protected onActivityResult(IILandroid/content/Intent;)V
 +    .locals 9
 +    .param p1, "requestCode"    # I
 +    .param p2, "resultCode"    # I
 +    .param p3, "resultIntent"    # Landroid/content/Intent;
 +
-+    .line 47
++    .line 24
 +    if-nez p1, :cond_1
 +
 +    const/4 v0, -0x1
 +
 +    if-ne p2, v0, :cond_1
 +
-+    .line 48
++    .line 25
 +    new-instance v0, Landroid/widget/Toast;
 +
 +    invoke-virtual {p0}, Lcn/edu/pku/pkurunner/Settings/SettingsActivity;->getApplicationContext()Landroid/content/Context;
@@ -428,14 +444,14 @@ diff -Nuar pkurunner-latest/smali/cn/edu/pku/pkurunner/Settings/SettingsActivity
 +
 +    invoke-direct {v0, v1}, Landroid/widget/Toast;-><init>(Landroid/content/Context;)V
 +
-+    .line 50
++    .line 27
 +    .local v0, "toast":Landroid/widget/Toast;
 +    :try_start_0
 +    invoke-virtual {p3}, Landroid/content/Intent;->getData()Landroid/net/Uri;
 +
 +    move-result-object v1
 +
-+    .line 51
++    .line 28
 +    .local v1, "uri":Landroid/net/Uri;
 +    invoke-virtual {p0}, Lcn/edu/pku/pkurunner/Settings/SettingsActivity;->getContentResolver()Landroid/content/ContentResolver;
 +
@@ -445,35 +461,86 @@ diff -Nuar pkurunner-latest/smali/cn/edu/pku/pkurunner/Settings/SettingsActivity
 +
 +    move-result-object v2
 +
-+    .line 52
++    .line 29
 +    .local v2, "input":Ljava/io/InputStream;
 +    invoke-virtual {p0}, Lcn/edu/pku/pkurunner/Settings/SettingsActivity;->getFilesDir()Ljava/io/File;
 +
 +    move-result-object v3
++    :try_end_0
++    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_2
 +
-+    .line 53
++    .line 31
 +    .local v3, "dir":Ljava/io/File;
++    :try_start_1
++    new-instance v4, Ljava/io/File;
++
++    const-string v5, "data.db-shm"
++
++    invoke-direct {v4, v3, v5}, Ljava/io/File;-><init>(Ljava/io/File;Ljava/lang/String;)V
++
++    .line 32
++    .local v4, "shm":Ljava/io/File;
++    invoke-virtual {v4}, Ljava/io/File;->delete()Z
++    :try_end_1
++    .catch Ljava/lang/Exception; {:try_start_1 .. :try_end_1} :catch_0
++
++    goto :goto_0
++
++    .line 33
++    .end local v4    # "shm":Ljava/io/File;
++    :catch_0
++    move-exception v4
++
++    :goto_0
++    nop
++
++    .line 35
++    :try_start_2
++    new-instance v4, Ljava/io/File;
++
++    const-string v5, "data.db-wal"
++
++    invoke-direct {v4, v3, v5}, Ljava/io/File;-><init>(Ljava/io/File;Ljava/lang/String;)V
++
++    .line 36
++    .local v4, "wal":Ljava/io/File;
++    invoke-virtual {v4}, Ljava/io/File;->delete()Z
++    :try_end_2
++    .catch Ljava/lang/Exception; {:try_start_2 .. :try_end_2} :catch_1
++
++    goto :goto_1
++
++    .line 37
++    .end local v4    # "wal":Ljava/io/File;
++    :catch_1
++    move-exception v4
++
++    :goto_1
++    nop
++
++    .line 38
++    :try_start_3
 +    new-instance v4, Ljava/io/File;
 +
 +    const-string v5, "data.db"
 +
 +    invoke-direct {v4, v3, v5}, Ljava/io/File;-><init>(Ljava/io/File;Ljava/lang/String;)V
 +
-+    .line 54
++    .line 39
 +    .local v4, "f":Ljava/io/File;
 +    new-instance v5, Ljava/io/FileOutputStream;
 +
 +    invoke-direct {v5, v4}, Ljava/io/FileOutputStream;-><init>(Ljava/io/File;)V
 +
-+    .line 55
++    .line 40
 +    .local v5, "output":Ljava/io/FileOutputStream;
 +    const/16 v6, 0x400
 +
 +    new-array v6, v6, [B
 +
-+    .line 57
++    .line 42
 +    .local v6, "bt":[B
-+    :goto_0
++    :goto_2
 +    invoke-virtual {v2, v6}, Ljava/io/InputStream;->read([B)I
 +
 +    move-result v7
@@ -483,30 +550,30 @@ diff -Nuar pkurunner-latest/smali/cn/edu/pku/pkurunner/Settings/SettingsActivity
 +    .local v8, "c":I
 +    if-lez v7, :cond_0
 +
-+    .line 58
++    .line 43
 +    const/4 v7, 0x0
 +
 +    invoke-virtual {v5, v6, v7, v8}, Ljava/io/FileOutputStream;->write([BII)V
 +
-+    goto :goto_0
++    goto :goto_2
 +
-+    .line 60
++    .line 45
 +    :cond_0
 +    invoke-virtual {v2}, Ljava/io/InputStream;->close()V
 +
-+    .line 61
++    .line 46
 +    invoke-virtual {v5}, Ljava/io/FileOutputStream;->close()V
 +
-+    .line 63
++    .line 48
 +    invoke-static {}, Landroid/os/Process;->myPid()I
 +
 +    move-result v7
 +
 +    invoke-static {v7}, Landroid/os/Process;->killProcess(I)V
-+    :try_end_0
-+    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
++    :try_end_3
++    .catch Ljava/lang/Exception; {:try_start_3 .. :try_end_3} :catch_2
 +
-+    .line 66
++    .line 51
 +    .end local v1    # "uri":Landroid/net/Uri;
 +    .end local v2    # "input":Ljava/io/InputStream;
 +    .end local v3    # "dir":Ljava/io/File;
@@ -514,13 +581,13 @@ diff -Nuar pkurunner-latest/smali/cn/edu/pku/pkurunner/Settings/SettingsActivity
 +    .end local v5    # "output":Ljava/io/FileOutputStream;
 +    .end local v6    # "bt":[B
 +    .end local v8    # "c":I
-+    goto :goto_1
++    goto :goto_3
 +
-+    .line 64
-+    :catch_0
++    .line 49
++    :catch_2
 +    move-exception v1
 +
-+    .line 65
++    .line 50
 +    .local v1, "e":Ljava/lang/Exception;
 +    invoke-virtual {p0}, Lcn/edu/pku/pkurunner/Settings/SettingsActivity;->getApplicationContext()Landroid/content/Context;
 +
@@ -538,35 +605,35 @@ diff -Nuar pkurunner-latest/smali/cn/edu/pku/pkurunner/Settings/SettingsActivity
 +
 +    invoke-virtual {v2}, Landroid/widget/Toast;->show()V
 +
-+    goto :goto_1
++    goto :goto_3
 +
-+    .line 47
++    .line 24
 +    .end local v0    # "toast":Landroid/widget/Toast;
 +    .end local v1    # "e":Ljava/lang/Exception;
 +    :cond_1
 +    nop
 +
-+    .line 68
-+    :goto_1
++    .line 53
++    :goto_3
 +    invoke-virtual {p0}, Lcn/edu/pku/pkurunner/Settings/SettingsActivity;->finish()V
 +
-+    .line 69
++    .line 54
 +    return-void
 +.end method
 +
  .method private synthetic a(Landroid/preference/Preference;Ljava/lang/Boolean;)V
      .locals 1
      .annotation system Ldalvik/annotation/Throws;
-@@ -1384,7 +1567,7 @@
+@@ -1384,7 +1617,7 @@
  
      move-result-object v0
  
--    const-string v1, "v1.2.6"
-+    const-string v1, "v1.2.6, 不知道高到哪里去了"
+-    const-string v1, "v1.2.8"
++    const-string v1, "v1.2.8, 不知道高到哪里去了"
  
      .line 235
      invoke-virtual {v0, v1}, Landroid/preference/Preference;->setSummary(Ljava/lang/CharSequence;)V
-@@ -1719,6 +1902,8 @@
+@@ -1719,6 +1952,8 @@
      .line 76
      invoke-direct {p0}, Lcn/edu/pku/pkurunner/Settings/SettingsActivity;->i()V
  
