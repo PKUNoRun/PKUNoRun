@@ -1,17 +1,17 @@
 diff -Nuar pkurunner-latest/AndroidManifest.xml pkurunner-target/AndroidManifest.xml
 --- pkurunner-latest/AndroidManifest.xml	2020-10-13 23:31:54.219456200 +0800
-+++ pkurunner-target/AndroidManifest.xml	2020-10-16 16:06:27.000000000 +0800
++++ pkurunner-target/AndroidManifest.xml	2020-10-16 23:46:29.472000000 +0800
 @@ -24,6 +24,13 @@
                  <category android:name="android.intent.category.DEFAULT"/>
              </intent-filter>
          </activity>
-+        <!-- <activity android:name=".AcceptDatabaseActivity">
++        <activity android:name=".AcceptDatabaseActivity">
 +            <intent-filter>
 +                <action android:name="android.intent.action.SEND" />
 +                <category android:name="android.intent.category.DEFAULT" />
 +                <data android:mimeType="*/*" />
 +            </intent-filter>
-+        </activity> -->
++        </activity>
          <activity android:label="@string/app_name" android:launchMode="singleTop" android:name="cn.edu.pku.pkurunner.MainActivity" android:screenOrientation="portrait" android:theme="@style/BaseTheme.Launcher">
              <intent-filter>
                  <action android:name="android.intent.action.MAIN"/>
@@ -62,6 +62,240 @@ diff -Nuar pkurunner-latest/res/xml/file_provider.xml pkurunner-target/res/xml/f
 +    <files-path path="" name="walker_record" />
  </paths>
 \ 文件尾没有换行符
+diff -Nuar pkurunner-latest/smali/cn/edu/pku/pkurunner/AcceptDatabaseActivity.smali pkurunner-target/smali/cn/edu/pku/pkurunner/AcceptDatabaseActivity.smali
+--- pkurunner-latest/smali/cn/edu/pku/pkurunner/AcceptDatabaseActivity.smali	1970-01-01 08:00:00.000000000 +0800
++++ pkurunner-target/smali/cn/edu/pku/pkurunner/AcceptDatabaseActivity.smali	2020-10-17 00:12:51.961200100 +0800
+@@ -0,0 +1,230 @@
++.class public Lcn/edu/pku/pkurunner/AcceptDatabaseActivity;
++.super Landroid/support/v7/app/AppCompatActivity;
++.source "AcceptDatabaseActivity.java"
++
++
++# direct methods
++.method public constructor <init>()V
++    .locals 0
++
++    .line 13
++    invoke-direct {p0}, Landroid/support/v7/app/AppCompatActivity;-><init>()V
++
++    return-void
++.end method
++
++
++# virtual methods
++.method protected onCreate(Landroid/os/Bundle;)V
++    .locals 12
++    .param p1, "savedInstanceState"    # Landroid/os/Bundle;
++
++    .line 17
++    invoke-super {p0, p1}, Landroid/support/v7/app/AppCompatActivity;->onCreate(Landroid/os/Bundle;)V
++
++    # .line 18
++    # const v0, 0x7f0cffff
++
++    # invoke-virtual {p0, v0}, Lcn/edu/pku/pkurunner/AcceptDatabaseActivity;->setContentView(I)V
++
++    .line 19
++    invoke-virtual {p0}, Lcn/edu/pku/pkurunner/AcceptDatabaseActivity;->getIntent()Landroid/content/Intent;
++
++    move-result-object v0
++
++    .line 20
++    .local v0, "intent":Landroid/content/Intent;
++    new-instance v1, Landroid/widget/Toast;
++
++    invoke-virtual {p0}, Lcn/edu/pku/pkurunner/AcceptDatabaseActivity;->getApplicationContext()Landroid/content/Context;
++
++    move-result-object v2
++
++    invoke-direct {v1, v2}, Landroid/widget/Toast;-><init>(Landroid/content/Context;)V
++
++    .line 22
++    .local v1, "toast":Landroid/widget/Toast;
++    const/4 v2, 0x1
++
++    :try_start_0
++    const-string v3, "android.intent.extra.STREAM"
++
++    invoke-virtual {v0, v3}, Landroid/content/Intent;->getParcelableExtra(Ljava/lang/String;)Landroid/os/Parcelable;
++
++    move-result-object v3
++
++    check-cast v3, Landroid/net/Uri;
++
++    .line 23
++    .local v3, "uri":Landroid/net/Uri;
++    invoke-virtual {p0}, Lcn/edu/pku/pkurunner/AcceptDatabaseActivity;->getContentResolver()Landroid/content/ContentResolver;
++
++    move-result-object v4
++
++    invoke-virtual {v4, v3}, Landroid/content/ContentResolver;->openInputStream(Landroid/net/Uri;)Ljava/io/InputStream;
++
++    move-result-object v4
++
++    .line 24
++    .local v4, "input":Ljava/io/InputStream;
++    invoke-virtual {p0}, Lcn/edu/pku/pkurunner/AcceptDatabaseActivity;->getFilesDir()Ljava/io/File;
++
++    move-result-object v5
++    :try_end_0
++    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_2
++
++    .line 26
++    .local v5, "dir":Ljava/io/File;
++    :try_start_1
++    new-instance v6, Ljava/io/File;
++
++    const-string v7, "data.db-shm"
++
++    invoke-direct {v6, v5, v7}, Ljava/io/File;-><init>(Ljava/io/File;Ljava/lang/String;)V
++
++    .line 27
++    .local v6, "shm":Ljava/io/File;
++    invoke-virtual {v6}, Ljava/io/File;->delete()Z
++    :try_end_1
++    .catch Ljava/lang/Exception; {:try_start_1 .. :try_end_1} :catch_0
++
++    goto :goto_0
++
++    .line 28
++    .end local v6    # "shm":Ljava/io/File;
++    :catch_0
++    move-exception v6
++
++    :goto_0
++    nop
++
++    .line 30
++    :try_start_2
++    new-instance v6, Ljava/io/File;
++
++    const-string v7, "data.db-wal"
++
++    invoke-direct {v6, v5, v7}, Ljava/io/File;-><init>(Ljava/io/File;Ljava/lang/String;)V
++
++    .line 31
++    .local v6, "wal":Ljava/io/File;
++    invoke-virtual {v6}, Ljava/io/File;->delete()Z
++    :try_end_2
++    .catch Ljava/lang/Exception; {:try_start_2 .. :try_end_2} :catch_1
++
++    goto :goto_1
++
++    .line 32
++    .end local v6    # "wal":Ljava/io/File;
++    :catch_1
++    move-exception v6
++
++    :goto_1
++    nop
++
++    .line 33
++    :try_start_3
++    new-instance v6, Ljava/io/File;
++
++    const-string v7, "data.db"
++
++    invoke-direct {v6, v5, v7}, Ljava/io/File;-><init>(Ljava/io/File;Ljava/lang/String;)V
++
++    .line 34
++    .local v6, "f":Ljava/io/File;
++    new-instance v7, Ljava/io/FileOutputStream;
++
++    invoke-direct {v7, v6}, Ljava/io/FileOutputStream;-><init>(Ljava/io/File;)V
++
++    .line 35
++    .local v7, "output":Ljava/io/FileOutputStream;
++    const/16 v8, 0x400
++
++    new-array v8, v8, [B
++
++    .line 37
++    .local v8, "bt":[B
++    :goto_2
++    invoke-virtual {v4, v8}, Ljava/io/InputStream;->read([B)I
++
++    move-result v9
++
++    move v10, v9
++
++    .local v10, "c":I
++    if-lez v9, :cond_0
++
++    .line 38
++    const/4 v9, 0x0
++
++    invoke-virtual {v7, v8, v9, v10}, Ljava/io/FileOutputStream;->write([BII)V
++
++    goto :goto_2
++
++    .line 40
++    :cond_0
++    invoke-virtual {v4}, Ljava/io/InputStream;->close()V
++
++    .line 41
++    invoke-virtual {v7}, Ljava/io/FileOutputStream;->close()V
++
++    .line 42
++    invoke-virtual {p0}, Lcn/edu/pku/pkurunner/AcceptDatabaseActivity;->getApplicationContext()Landroid/content/Context;
++
++    move-result-object v9
++
++    const-string v11, "Success"
++
++    invoke-static {v9, v11, v2}, Landroid/widget/Toast;->makeText(Landroid/content/Context;Ljava/lang/CharSequence;I)Landroid/widget/Toast;
++
++    move-result-object v9
++
++    invoke-virtual {v9}, Landroid/widget/Toast;->show()V
++
++    .line 44
++    invoke-static {}, Landroid/os/Process;->myPid()I
++
++    move-result v9
++
++    invoke-static {v9}, Landroid/os/Process;->killProcess(I)V
++    :try_end_3
++    .catch Ljava/lang/Exception; {:try_start_3 .. :try_end_3} :catch_2
++
++    .line 47
++    .end local v3    # "uri":Landroid/net/Uri;
++    .end local v4    # "input":Ljava/io/InputStream;
++    .end local v5    # "dir":Ljava/io/File;
++    .end local v6    # "f":Ljava/io/File;
++    .end local v7    # "output":Ljava/io/FileOutputStream;
++    .end local v8    # "bt":[B
++    .end local v10    # "c":I
++    goto :goto_3
++
++    .line 45
++    :catch_2
++    move-exception v3
++
++    .line 46
++    .local v3, "e":Ljava/lang/Exception;
++    invoke-virtual {p0}, Lcn/edu/pku/pkurunner/AcceptDatabaseActivity;->getApplicationContext()Landroid/content/Context;
++
++    move-result-object v4
++
++    invoke-virtual {v3}, Ljava/lang/Exception;->toString()Ljava/lang/String;
++
++    move-result-object v5
++
++    invoke-static {v4, v5, v2}, Landroid/widget/Toast;->makeText(Landroid/content/Context;Ljava/lang/CharSequence;I)Landroid/widget/Toast;
++
++    move-result-object v2
++
++    invoke-virtual {v2}, Landroid/widget/Toast;->show()V
++
++    .line 48
++    .end local v3    # "e":Ljava/lang/Exception;
++    :goto_3
++    invoke-virtual {p0}, Lcn/edu/pku/pkurunner/AcceptDatabaseActivity;->finish()V
++
++    .line 49
++    return-void
++.end method
 diff -Nuar pkurunner-latest/smali/cn/edu/pku/pkurunner/MainActivity.smali pkurunner-target/smali/cn/edu/pku/pkurunner/MainActivity.smali
 --- pkurunner-latest/smali/cn/edu/pku/pkurunner/MainActivity.smali	2020-10-13 23:31:55.417783000 +0800
 +++ pkurunner-target/smali/cn/edu/pku/pkurunner/MainActivity.smali	2020-10-16 16:07:52.810246700 +0800
