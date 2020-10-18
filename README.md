@@ -28,6 +28,8 @@ People who don't want to run, unite!
 
 导入记录成功后, 通过PKU Runner原有的上传功能上传记录即可.
 
+![示例](https://github.com/PKUNoRun/PKUNoRun/blob/master/demo.gif)
+
 导出`data.db`的功能自然也可以用作备份跑步记录.
 
 如果你的手机已经root因此可以随意访问`/data/data/cn.edu.pku.pkurunner/files`目录下的文件, 那你只需要用到本项目修改`data.db`的部分. 我们相信知道怎么root手机的用户都知道接下来该怎么做.
