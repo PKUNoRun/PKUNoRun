@@ -22,11 +22,9 @@ People who don't want to run, unite!
 
 请注意这个修改后的App与原版App不可共存, 请先上传已有的所有跑步记录再卸载原版, 以免跑步记录丢失. 安装修改版后请先登录您的账号, 再完全退出PKU Runner一次, 使PKU Runner把已有的登录信息写入数据库.
 
-然后在`设置/破解功能`中选择导出`data.db`, 例如使用微信发送给文件传输助手什么的(可能被保存成不同类型的文件), 随后请用文件管理器找到这个文件以备后用.
+再安装[PKUNoRunHelper](https://github.com/PKUNoRun/PKUNoRunHelper/releases/tag/v1.2.8). 然后在PKURunner的`设置/破解功能`中选择导出`data.db`, 在PKUNoRunHelper中打开, 填写参数, 点按右下角按钮生成跑步记录. 生成完后, 在弹出的界面中选择PKURunner中打开以导入记录.
 
-访问[http://pkunorun.github.io/](http://pkunorun.github.io/), 根据其提示上传`data.db`并修改之. 将被修改过的`data.db`下载到本地后, 从`设置/破解功能`中导入`data.db`. 如果无效果, 登录你的账户以进入设置页面, 多导入几次即可.
-
-导入后App由于并不完善,会停止运行(白屏),可以手动清除活动并再次进入App. 此时可能能看到你的跑步记录, 也可能看不到. 如果没有出现新的跑步记录, 可以尝试退出App再进入, 或重新导入跑步记录.
+导入后App由于并不完善, 会停止运行(白屏), 可以手动清除活动并再次进入App. 此时可能能看到你的跑步记录, 也可能看不到. 如果没有出现新的跑步记录, 可以尝试退出App再进入, 或重新导入跑步记录.
 
 导入记录成功后, 通过PKU Runner原有的上传功能上传记录即可.
 
@@ -35,6 +33,12 @@ People who don't want to run, unite!
 如果你的手机已经root因此可以随意访问`/data/data/cn.edu.pku.pkurunner/files`目录下的文件, 那你只需要用到本项目修改`data.db`的部分. 我们相信知道怎么root手机的用户都知道接下来该怎么做.
 
 对于仍然担心安全性的用户, `generator`目录下提供完全本地运行的记录生成工具.
+
+较复杂的网页版记录修改方案不再是首选:
+
+<del>然后在`设置/破解功能`中选择导出`data.db`, 例如使用微信发送给文件传输助手什么的(可能被保存成不同类型的文件), 随后请用文件管理器找到这个文件以备后用.</del>
+
+<del>访问[http://pkunorun.github.io/](http://pkunorun.github.io/), 根据其提示上传`data.db`并修改之. 将被修改过的`data.db`下载到本地后, 从`设置/破解功能`中导入`data.db`. 如果无效果, 登录你的账户以进入设置页面, 多导入几次即可.</del>
 
 ## To Developers
 
