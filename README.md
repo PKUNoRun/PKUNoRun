@@ -38,9 +38,9 @@ People who don't want to run, unite!
 
 较复杂的网页版记录修改方案不再是首选:
 
-<del>然后在`设置/破解功能`中选择导出`data.db`, 例如使用微信发送给文件传输助手什么的(可能被保存成不同类型的文件), 随后请用文件管理器找到这个文件以备后用.</del>
+然后在`设置/破解功能`中选择导出`data.db`, 例如使用微信发送给文件传输助手什么的(可能被保存成不同类型的文件), 随后请用文件管理器找到这个文件以备后用.
 
-<del>访问[http://pkunorun.github.io/](http://pkunorun.github.io/), 根据其提示上传`data.db`并修改之. 将被修改过的`data.db`下载到本地后, 从`设置/破解功能`中导入`data.db`. 如果无效果, 登录你的账户以进入设置页面, 多导入几次即可.</del>
+访问[http://pkunorun.github.io/](http://pkunorun.github.io/), 根据其提示上传`data.db`并修改之. 将被修改过的`data.db`下载到本地后, 从`设置/破解功能`中导入`data.db`. 如果无效果, 登录你的账户以进入设置页面, 多导入几次即可.
 
 ## To Developers
 
@@ -62,9 +62,9 @@ People who don't want to run, unite!
 
 ## TODO
 
-- [ ] 开发一个app, 支持直接分享data.db以及将data.db分享到PKU Runner, 以优化处理data.db时的体验(这样就不用打开浏览器再去文件管理器里找文件了)
+- [+] 开发一个app, 支持直接分享data.db以及将data.db分享到PKU Runner, 以优化处理data.db时的体验(这样就不用打开浏览器再去文件管理器里找文件了)
 
-- [ ] 解决白屏问题, 提高导入data.db时的成功率(虽然可能永远也不做, 多试几次反正能好)
+- [+] 解决白屏问题, 提高导入data.db时的成功率(虽然可能永远也不做, 多试几次反正能好)
 
 - [ ] 进一步修改伪造数据算法(似乎紧急性也没那么强)
 
