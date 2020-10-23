@@ -18,7 +18,7 @@ People who don't want to run, unite!
 
 ## Usage
 
-首先下载[pkurunner-target.apk](https://github.com/PKUNoRun/PKUNoRun/releases/download/v1.2.6/pkurunner-target.apk),并登录你的账号.
+首先下载[pkurunner-target.apk](https://github.com/PKUNoRun/PKUNoRun/releases),并登录你的账号.
 
 请注意这个修改后的App与原版App不可共存, 请先上传已有的所有跑步记录再卸载原版, 以免跑步记录丢失. 安装修改版后请先登录您的账号, 再完全退出PKU Runner一次, 使PKU Runner把已有的登录信息写入数据库.
 
