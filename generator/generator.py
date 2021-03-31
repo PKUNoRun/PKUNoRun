@@ -1,25 +1,24 @@
 #!/usr/bin/env python3
 
-import sys, os, time, datetime, random
-import importlib
+import sys, os, time, datetime, random, importlib, argparse, sqlite3
 
-try:
-    import sqlite3
-except Exception as e:
-    print("sqlite3 required. execute 'pip install sqlite3' to install.")
-    os._exit(0)
+parser = argparse.ArgumentParser(description='Insert a record into PKURunner.')
+
+parser.add_argument("-db"   , required=True, help="Extracted data.db file to edit.")
+parser.add_argument("-time" , required=True, help="Time of the record to insert(YYYYMMDD-HH:MM:SS).")
+parser.add_argument("-speed", required=True, help="Running speed(min/km).", type=float)
+parser.add_argument("-dist" , required=True, help="Distance(km).", type=float)
+parser.add_argument("-freq" , required=True, help="Stride frequency(bpm).", type=float)
+parser.add_argument("-verbose", help="Display arguments.")
+
+args = parser.parse_args()
+
+v = True if args.verbose else False
 
 dbm = importlib.import_module("dbm")
 fake = importlib.import_module("fake")
 
-if len(sys.argv) < 2:
-    print("usage: generator.py database.db")
-    print("usage: generator.py database.db time_utc")
-    print("time_utc should be 13-digit int")
-    os._exit(0)
-
-
-db = sqlite3.connect(sys.argv[1])
+db = sqlite3.connect(args.db)
 cur = db.cursor()
 # init output
 dbm.init(cur)
@@ -52,33 +51,18 @@ else:
         pace               float   跑步速度/(min/km)
         stride_frequncy    int     步频/(step/min)
 """
-if len(sys.argv)==3:
-    dateUTC = int(sys.argv[2])
-    distance = 6.0
-    velocity = 8.0
-    frequncy = 120
-else:
-    dateUTC  = input("input time (YYYY-MM-DD HH:MM:SS)      :\t")
-    distance = input("input distance ( km )                 :\t")
-    velocity = input("input velocity ( min/km )             :\t")
-    frequncy = input("input stride frequncy (bpm)           :\t")
-    if dateUTC ==  '':
-        dateUTC  = int(time.time()*1000)
-    else:
-        dateUTC  = int(time.mktime(time.strptime(dateUTC, r'%Y-%m-%d %H:%M:%S')))*1000+random.randint(0,999)
-    if distance == '':
-        distance = 6.0
-    else:
-        distance = float(distance)
-    if velocity == '':
-        velocity = 8.0
-    else:
-        velocity = float(velocity)
-    if frequncy == '':
-        frequncy = 120
-    else:
-        frequncy = float(frequncy)
-tracks = fake.Record(distance*0.9031, velocity, frequncy) # 0.9031 to correct distance
+
+
+# dateUTC  = int(time.time()*1000)
+dateUTC  = int(time.mktime(time.strptime(args.time, r'%Y%m%d-%H:%M:%S')))*1000+random.randint(0,999)
+distance = args.dist
+velocity = args.speed
+frequency = args.freq
+
+if v:
+    print(f"{dateUTC}, {distance}, {velocity}, {frequency}")
+
+tracks = fake.Record(distance*0.9031, velocity, frequency) # 0.9031 to correct distance
 
 rid = dbm.append_record(cur, uid, dateUTC, tracks.distance*1000, tracks.duration, tracks.step)
 
@@ -86,4 +70,3 @@ dbm.append_track(cur,rid,tracks.detail)
 
 db.commit()
 db.close()
-print("done")

@@ -41,3 +41,28 @@ clear:
 
 .PHONY : latest
 latest : pkurunner-latest.apk
+
+.PHONY : backup
+backup:
+	rm -fr apps/ apps.tar apps.list apps.ab
+	adb backup -nosystem -noapk -f apps.ab cn.edu.pku.pkurunner
+	java -jar ./abe.jar unpack apps.ab apps.tar
+	tar tf apps.tar | grep -F "cn.edu.pku.pkurunner" | grep -v "wal" | grep -v "shm" > apps.list
+	tar xf apps.tar
+
+.PHONY : restore
+restore:
+	rm -fr apps2.tar apps2.ab
+	tar cf apps2.tar -T apps.list
+	java -jar ./abe.jar pack apps2.tar apps2.ab
+	adb restore apps2.ab
+
+.PHONY : check
+check:
+	@echo "WARNING: Will Reinstall cn.edu.pku.pkurunner. Backup first."
+	@echo -n "Are you sure? [y/N] " && read ans && [ $${ans:-N} = y ]
+
+.PHONY : purge
+purge: check
+	adb uninstall cn.edu.pku.pkurunner
+	adb install pkurunner-latest.apk
