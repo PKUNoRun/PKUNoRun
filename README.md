@@ -14,7 +14,7 @@ People who don't want to run, unite!
 
 由于新版本的`PKURunner`加了商业壳, 对逆向造成了一定困难, 我们暂时没能做到完全消除使用门槛的目标.
 
-有`java`和`python3`运行环境的*nix用户, 可以执行
+使用`adb`连接手机(无需root), 有`java`和`python3`运行环境的* nix用户, 可以执行
 
 ```shell
 make backup
