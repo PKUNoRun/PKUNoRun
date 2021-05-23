@@ -20,7 +20,7 @@ People who don't want to run, unite!
 make backup
 ```
 
-以得到`PKURunner`的内部数据. 手机将弹出一个确认备份的窗口, 建议为备份设置非空的密码(此时需向程序提供该密码), 以减少出现某些错误(指`1024 bytes written to apps.tar.`)的可能.
+以得到`PKURunner`的内部数据. 手机将弹出一个确认备份的窗口, 建议为备份设置非空的密码(此时需向程序提供该密码), 以减少出现某些错误(指[`1024 bytes written to apps.tar.`](https://github.com/PKUNoRun/PKUNoRun/issues/11))的可能.
 
 执行
 
