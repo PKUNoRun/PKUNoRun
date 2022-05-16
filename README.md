@@ -10,6 +10,12 @@ People who don't want to run, unite!
 
 使用本项目的风险由使用者自行承担.
 
+## 更新
+
+我们在 Heroku 上部署了[网页版本](https://pkunorun.herokuapp.com), 这本质上是 https://github.com/PkuRH/PKURunningHelper 的一个包装. 其源码可见[这里](https://github.com/PKUNoRun/PKURunningHelper-Heroku). 该版本可以完成跑步到上传的全部步骤, 因此需要输入用户的学号和密码.
+
+建议**不具备计算机相关技能且信任我们的同学**使用这一版本. 出于安全考虑，仍然建议您在使用该版本后修改校园网账号的密码.
+
 ## Usage
 
 由于新版本的`PKURunner`加了商业壳, 对逆向造成了一定困难, 我们暂时没能做到完全消除使用门槛的目标.
